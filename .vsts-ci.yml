@@ -7,3 +7,10 @@ steps:
 
 - bash: ./sbt/bin/sbt package
   displayName: Build
+
+- task: publishBuildArtifacts@1
+  displayName: Publish Artifacts
+  inputs:
+    PathtoPublish: $(Build.SourcesDirectory)/target/scala-2.12/hello_2.12-0.1.0-SNAPSHOT.jar
+    ArtifactName: helloworld-jar
+    ArtifactType: Container
